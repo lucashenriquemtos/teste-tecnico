@@ -24,7 +24,7 @@ public class AuthController {
 	@PostMapping
 	public String login(@RequestBody Login login) {
 		UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
-				new UsernamePasswordAuthenticationToken(login.getUsername(), login.getPassword());
+				new UsernamePasswordAuthenticationToken(login.getLogin(), login.getSenha());
 
 		Authentication authenticate = this.authenticationManager
 				.authenticate(usernamePasswordAuthenticationToken);

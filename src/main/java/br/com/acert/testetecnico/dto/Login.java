@@ -4,8 +4,8 @@ import lombok.Getter;
 
 @Getter
 public class Login {
-	private String username;
-	private String password;
+	private String login;
+	private String senha;
 
 }
 
