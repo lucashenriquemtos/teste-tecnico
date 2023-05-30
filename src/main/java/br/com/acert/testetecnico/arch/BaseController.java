@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 public abstract class BaseController<T, ID> {
@@ -42,6 +43,7 @@ public abstract class BaseController<T, ID> {
 	}
 
 	@DeleteMapping("/{id}")
+	@RolesAllowed("admin")
 	public ResponseEntity<Void> delete(@PathVariable ID id) {
 		if (!repository.existsById(id)) {
 			return ResponseEntity.notFound().build();
