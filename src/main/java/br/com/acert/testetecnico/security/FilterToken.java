@@ -31,7 +31,7 @@ public class FilterToken extends OncePerRequestFilter {
 		String authorizationHeader = request.getHeader("Authorization");
 
 		if (authorizationHeader != null) {
-			token = authorizationHeader.replace("Bearer", "");
+			token = authorizationHeader.replace("Bearer ", "");
 			String subject = this.tokenService.getSubject(token);
 
 			Usuario usuario = this.userRepository.findByLogin(subject);
