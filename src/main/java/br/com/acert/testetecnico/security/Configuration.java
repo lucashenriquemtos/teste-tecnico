@@ -1,5 +1,6 @@
 package br.com.acert.testetecnico.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -10,10 +11,15 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @org.springframework.context.annotation.Configuration
 @EnableWebSecurity
 public class Configuration {
+
+	@Autowired
+	private FilterToken filter;
+
 	@Bean
 	public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
 		return authenticationConfiguration.getAuthenticationManager();
@@ -30,6 +36,8 @@ public class Configuration {
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and().authorizeHttpRequests()
 				.antMatchers(HttpMethod.POST, "/login").permitAll()
-				.anyRequest().authenticated().and().build();
+				.anyRequest().authenticated()
+				.and().addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class)
+				.build();
 	}
 }
