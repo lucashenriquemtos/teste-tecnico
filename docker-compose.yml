@@ -6,8 +6,12 @@ services:
     volumes:
       - ./data:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: your_username
-      POSTGRES_PASSWORD: your_password
-      POSTGRES_DB: your_database_name
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: acert
+      POSTGRES_DB: acert
+    container_name: postgres-db
     ports:
-      - 5432:5432
+      - "5432:5432"
+
+
+
