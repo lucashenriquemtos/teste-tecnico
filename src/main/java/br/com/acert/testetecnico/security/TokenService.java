@@ -10,7 +10,7 @@ import java.time.ZoneOffset;
 
 
 @Service
-public class  TokenService {
+public class TokenService {
 	public String gerarToken(Usuario usuario) {
 		return JWT.create()
 				.withIssuer("Pedidos")

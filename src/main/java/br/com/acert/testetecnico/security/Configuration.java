@@ -13,7 +13,6 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @org.springframework.context.annotation.Configuration
 @EnableWebSecurity
-
 public class Configuration {
 	@Bean
 	public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
@@ -21,7 +20,7 @@ public class Configuration {
 	}
 
 	@Bean
-	public PasswordEncoder passwordEncoder(){
+	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 
@@ -30,7 +29,7 @@ public class Configuration {
 		return httpSecurity.csrf().disable()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and().authorizeHttpRequests()
-				.antMatchers(HttpMethod.POST,"/login").permitAll()
+				.antMatchers(HttpMethod.POST, "/login").permitAll()
 				.anyRequest().authenticated().and().build();
 	}
 }
