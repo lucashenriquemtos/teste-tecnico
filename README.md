@@ -48,5 +48,3 @@ Certifique-se de ter o Docker, Java 8 e o Postman instalados em seu sistema ante
    ```
    Authorization: Bearer {seu_token_jwt}
    ```
-
-Certifique-se de ajustar as instruções conforme necessário, dependendo da estrutura e das rotas da sua API.
