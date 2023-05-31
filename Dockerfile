@@ -7,9 +7,6 @@ WORKDIR /app
 # Copia o arquivo JAR do projeto para o contêiner
 COPY target/teste-tecnico.jar app.jar
 
-# Define as variáveis de ambiente
-ENV JAVA_OPTS=""
-
 # Expõe a porta utilizada pela aplicação Spring Boot
 EXPOSE 8080
 
