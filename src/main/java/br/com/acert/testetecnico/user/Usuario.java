@@ -16,7 +16,7 @@ import java.util.Collections;
 @NoArgsConstructor
 public class Usuario implements UserDetails {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	private String login;
