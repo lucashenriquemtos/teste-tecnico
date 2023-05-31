@@ -38,6 +38,7 @@ public class Configuration {
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and().authorizeHttpRequests()
 				.antMatchers(HttpMethod.POST, "/login").permitAll()
+				.antMatchers(HttpMethod.GET, "/home").permitAll()
 				.antMatchers("/swagger-ui/**", "/swagger-resources/**", "/v2/api-docs").permitAll()
 				.anyRequest().authenticated()
 				.and().addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class)
